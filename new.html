@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>TRY, THIS IS the title</title>
+    <style>
+        :root {
+            --primary-color: #ea86f3bf;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --background-color: #ffffff;
+            --card-background: #f8f9fa;
+            --highlight-color: #f0f7ff;
+            --section-spacing: 4rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.5;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            padding: 2rem 0;
+            margin: 0 auto;
+        }
+
+        .container {
+            width: 98%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: var(--section-spacing);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .paper-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .abstract-header {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-color);
+            text-align: center;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .abstract {
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #444;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .abstract p {
+            margin-bottom: 1rem;
+        }
+
+        .abstract strong {
+            color: var(--text-color);
+        }
+
+        .abstract em {
+            font-style: italic;
+        }
+
+        .dataset-section {
+            margin-bottom: var(--section-spacing);
+        }
+
+        .dataset-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .dataset-tab {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin: 0 1rem;
+        }
+
+        .dataset-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .dataset-content {
+            display: none;
+        }
+
+        .dataset-content.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--background-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            table-layout: fixed;
+            margin-bottom: 2rem;
+        }
+
+        th,
+        td {
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        th {
+            background-color: var(--card-background);
+            font-weight: 600;
+            color: var(--text-color);
+            padding: 1rem 0.5rem;
+            white-space: nowrap;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .model-ours {
+            font-weight: 700;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .model-ours::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 15%;
+            width: 70%;
+            height: 2px;
+            background-color: var(--primary-color);
+            opacity: 0.5;
+        }
+
+        td.model-ours-cell {
+            background-color: var(--highlight-color);
+        }
+
+        .description-cell {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            padding: 0.8rem 0.5rem;
+        }
+
+        .text-cell {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            padding: 0.8rem 0.5rem;
+        }
+
+        .style-tag {
+            border-bottom: 1px solid var(--primary-color);
+            opacity: 0.9;
+        }
+
+        audio {
+            width: 150px;
+            margin: 0.3rem 0;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: var(--card-background);
+        }
+
+        @media (max-width: 1200px) {
+            body {
+                padding: 0.8rem 0;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            th,
+            td {
+                min-width: 150px;
+            }
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--highlight-color);
+            color: var(--primary-color);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .basic-tag {
+            background-color: #f5f5f5;
+            color: #666;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .dataset-table td {
+            vertical-align: middle;
+            padding: 1rem 0.5rem;
+        }
+
+        .dataset-table audio {
+            width: 180px;
+        }
+
+        .disclaimer {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 1rem;
+            scroll-margin-top: 2rem;
+        }
+
+        .disclaimer p {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .disclaimer-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: normal;
+        }
+
+        .disclaimer-link:hover {
+            text-decoration: underline;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .nav-tab {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-tab:hover {
+            color: var(--primary-color);
+            background-color: var(--highlight-color);
+        }
+
+        .demo-intro {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .demo-intro p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .subtitle {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            color: #444;
+            padding: 0 1rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .model-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .model-tab {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin: 0 1rem;
+        }
+
+        .model-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .model-content {
+            display: none;
+        }
+
+        .model-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <section>
+            <h1 class='paper-title'>标题</h1>
+            <h2 class='abstract-header'>摘要</h2>
+            <div class='abstract'>
+                <p>
+                    一句简要摘要介绍。
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class='demo-intro'>
+                <p>下面是演示。</p>
+            </div>
+        </section>
+        <section id='model-demo'>
+            <h2 class='section-title'>风格提示演示</h2>
+            <p class='subtitle'>试听示例。</p>
+            <div class='model-tabs'>
+                <div id='tag1' class='model-tab active' onclick='switchModelTab("tg1")'>示例一</div>
+                <div id='tag2' class='model-tab' onclick='switchModelTab("tg2")'>示例二</div>
+            </div>
+            <div id='12' class='12'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>文本</th>
+                            <th>风格提示</th>
+                            <th class='md1'>🔊 示例音频1</th>
+                            <th class='md2'>🔊 示例音频2</th>
+                            <th>对比1</th>
+                            <th>对比2</th>
+                            <th>对比3</th>
+                            <th>真实音频</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class='text-cell'>示例文本</td>
+                            <td class='description-cell'>风格描述</td>
+                            <td class='model-ours-cell'><audio controls preload='none' src='#'></audio></td>
+                            <td class='model-ours-cell'><audio controls preload='none' src='#'></audio></td>
+                            <td><audio controls preload='none' src='#'></audio></td>
+                            <td><audio controls preload='none' src='#'></audio></td>
+                            <td><audio controls preload='none' src='#'></audio></td>
+                            <td><audio controls preload='none' src='#'></audio></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id='random-picked-content' class='model-content'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>文本</th>
+                            <th>风格提示</th>
+                            <th class='model-ours'>🔊 示例音频1</th>
+                            <th class='model-ours'>🔊 示例音频2</th>
+                            <th>对比1</th>
+                            <th>对比2</th>
+                            <th>对比3</th>
+                            <th>真实音频</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class='text-cell'>示例文本</td>
+                            <td class='description-cell'>风格描述</td>
+                            <td class='model-ours-cell'><audio controls preload='none' src='#'></audio></td>
+                            <td class='model-ours-cell'><audio controls preload='none' src='#'></audio></td>
+                            <td><audio controls preload='none' src='#'></audio></td>
+                            <td><audio controls preload='none' src='#'></audio></td>
+                            <td><audio controls preload='none' src='#'></audio></td>
+                            <td><audio controls preload='none' src='#'></audio></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id='disclaimer' class='disclaimer'>
+                <p>* 免责声明：此处为模板，无真实数据。</p>
+            </div>
+        </section>
+        <section id='dataset-demo' class='dataset-section'>
+            <h2 class='section-title'>数据集演示</h2>
+            <p class='subtitle'>以下为数据集样例。</p>
+            <div class='dataset-tabs'>
+                <div id='psc-base-tab' class='dataset-tab active' onclick='switchDatasetTab("psc-base")'>数据集A</div>
+                <div id='psc-scaled-tab' class='dataset-tab' onclick='switchDatasetTab("psc-scaled")'>数据集B</div>
+            </div>
+            <div id='psc-base-content' class='dataset-content active'>
+                <table class='dataset-table'>
+                    <thead>
+                        <tr>
+                            <th>音频</th>
+                            <th>文本</th>
+                            <th>丰富标签</th>
+                            <th>基础标签</th>
+                            <th>风格提示</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><audio controls preload='none' src='#'></audio></td>
+                            <td class='text-cell'>示例文本</td>
+                            <td>
+                                <div class='tag-container'><span class='tag'>标签1</span></div>
+                            </td>
+                            <td>
+                                <div class='tag-container'><span class='basic-tag'>标签A</span></div>
+                            </td>
+                            <td class='description-cell'>风格描述</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id='psc-scaled-content' class='dataset-content'>
+                <table class='dataset-table'>
+                    <thead>
+                        <tr>
+                            <th>音频</th>
+                            <th>文本</th>
+                            <th>丰富标签</th>
+                            <th>基础标签</th>
+                            <th>风格提示</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><audio controls preload='none' src='#'></audio></td>
+                            <td class='text-cell'>示例文本</td>
+                            <td>
+                                <div class='tag-container'><span class='tag'>标签2</span></div>
+                            </td>
+                            <td>
+                                <div class='tag-container'><span class='basic-tag'>标签B</span></div>
+                            </td>
+                            <td class='description-cell'>风格描述</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <script>
+        function switchDatasetTab(tabName) {
+            // Hide all content
+            document.querySelectorAll('.dataset-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Deactivate all tabs
+            document.querySelectorAll('.dataset-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected content and activate tab
+            document.getElementById(tabName + '-content').classList.add('active');
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
+
+        function switchModelTab(tabName) {
+            // Hide all content
+            document.querySelectorAll('.model-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Deactivate all tabs
+            document.querySelectorAll('.model-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected content and activate tab
+            document.getElementById(tabName + '-content').classList.add('active');
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
