@@ -23,7 +23,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Times New Roman', Times, serif;
             line-height: 1.5;
             color: var(--text-color);
             background-color: var(--background-color);
@@ -364,153 +364,392 @@
         .model-content.active {
             display: block;
         }
+
+        .abstract,
+        .abstract-header {
+            font-size: 2.2rem !important;
+            color: #000 !important;
+        }
+
+        .figure-caption {
+            max-width: 900px;
+            text-align: center;
+            color: #000;
+            font-size: 1.15rem;
+            margin: 0 auto 1.5rem auto;
+            font-weight: 500;
+        }
     </style>
 </head>
 
 <body>
     <div class='container'>
         <section>
-            <h1 class='paper-title'>标题</h1>
-            <h2 class='abstract-header'>摘要</h2>
-            <div class='abstract'>
-                <p>
-                    一句简要摘要介绍。
-                </p>
+            <h1 class='paper-title'>NVSpeech: Word-level Annotated Speech Dataset with
+            Non-verbal Vocalization for Human-like Synthesis</h1>
+            <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2.5rem;">
+            <a href="https://arxiv.org/" target="_blank" rel="noopener"
+                style="display: flex; align-items: center; gap: 0.5rem; background: #e6dbfa; color: #5b20b4; border: none; border-radius: 6px; padding: 0.7rem 1.6rem; font-size: 1rem; font-weight: 600; text-decoration: none; box-shadow: 0 1px 4px rgba(91,32,180,0.07); transition: background 0.2s;">
+                <svg width="20" height="20" fill="none" viewBox="0 0 20 20" style="vertical-align: middle;">
+                <rect x="3" y="3" width="14" height="14" rx="2.5" stroke="#5b20b4" stroke-width="1.5" />
+                <path d="M7 7h6v6H7z" fill="#5b20b4" fill-opacity="0.18" />
+                </svg>
+                Paper
+            </a>
+            <a href="https://github.com/" target="_blank" rel="noopener"
+                style="display: flex; align-items: center; gap: 0.5rem; background: #e6dbfa; color: #5b20b4; border: none; border-radius: 6px; padding: 0.7rem 1.6rem; font-size: 1rem; font-weight: 600; text-decoration: none; box-shadow: 0 1px 4px rgba(91,32,180,0.07); transition: background 0.2s;">
+                <svg width="20" height="20" fill="none" viewBox="0 0 20 20" style="vertical-align: middle;">
+                <path fill="#5b20b4" fill-opacity="0.18"
+                    d="M10 2C5.03 2 1 6.03 1 11c0 3.98 2.61 7.34 6.22 8.53.45.08.62-.2.62-.44 0-.22-.01-.8-.01-1.57-2.53.55-3.07-1.22-3.07-1.22-.41-1.04-1-1.32-1-1.32-.82-.56.06-.55.06-.55.91.06 1.39.94 1.39.94.8 1.38 2.09.98 2.6.75.08-.58.31-.98.56-1.2-2.02-.23-4.15-1.01-4.15-4.48 0-.99.36-1.8.94-2.43-.09-.23-.41-1.16.09-2.41 0 0 .76-.24 2.5.92A8.7 8.7 0 0 1 10 6.8c.77.004 1.54.104 2.26.304 1.74-1.16 2.5-.92 2.5-.92.5 1.25.18 2.18.09 2.41.59.63.94 1.44.94 2.43 0 3.48-2.13 4.25-4.16 4.48.32.28.6.83.6 1.67 0 1.2-.01 2.17-.01 2.47 0 .24.17.53.62.44C16.39 18.34 19 14.98 19 11c0-4.97-4.03-9-9-9Z" />
+                </svg>
+                Github
+            </a>
+            <a href="https://nvspeech.github.io/" target="_blank" rel="noopener"
+                style="display: flex; align-items: center; gap: 0.5rem; background: #e6dbfa; color: #5b20b4; border: none; border-radius: 6px; padding: 0.7rem 1.6rem; font-size: 1rem; font-weight: 600; text-decoration: none; box-shadow: 0 1px 4px rgba(91,32,180,0.07); transition: background 0.2s;">
+                <svg width="20" height="20" fill="none" viewBox="0 0 20 20" style="vertical-align: middle;">
+                <text x="3" y="8" font-size="5" fill="#5b20b4" font-family="monospace">10101</text>
+                <text x="5" y="13" font-size="5" fill="#5b20b4" font-family="monospace">01010</text>
+                <text x="3" y="18" font-size="5" fill="#5b20b4" font-family="monospace">10101</text>
+                </svg>
+                Dataset
+            </a>
+            </div>
+            <h2 class="abstract-header">Abstract</h2>
+            <p>
+            Non-verbal vocalizations (NVVs)—such as laughter, breathing, and interjections like “uhm” and “oh”—are
+            essential
+            components of natural spoken communication. They enhance the realism, expressivity, and social
+            appropriateness of
+            speech, yet remain largely overlooked in conventional ASR and TTS systems. To bridge this gap, we
+            introduce
+            <strong>NVSpeech</strong>, the largest word-level annotated dataset to date that explicitly captures
+            both lexical
+            content and <span style="font-size:1.25em;font-style:italic;text-decoration:underline;">18</span>
+            categories of para-linguistic expressions, collected entirely from real-world,
+            human-spoken audio.
+            </p>
+            <p>The construction and application of <strong>NVSpeech</strong> proceed in three stages:</p>
+            <ol>
+            <li>
+                We manually annotate <span
+                style="font-size:1.25em;font-style:italic;text-decoration:underline;">48,430</span> utterances
+                with word-level aligned NVV tags, covering diverse speech
+                scenarios with
+                high inter-annotator consistency.
+            </li>
+            <li>
+                Using this subset, we develop the first <em>paralinguistic-aware ASR model</em>, which extends
+                conventional ASR
+                by incorporating inline NVV markers (e.g., “You’re so funny&lt;laughter&gt;”), treated as special
+                decoding
+                tokens. This model is then used to automatically label a large-scale speech corpus, producing the
+                full NVSpeech
+                dataset comprising <span
+                style="font-size:1.25em;font-style:italic;text-decoration:underline;">265,888</span> utterances
+                and <span style="font-size:1.25em;font-style:italic;text-decoration:underline;">775</span> hours of
+                aligned audio.
+            </li>
+            <li>
+                To validate the effectiveness of NVSpeech, we fine-tune a zero-shot TTS model on both human- and
+                auto-labeled
+                data. The model enables explicit NVV insertion at arbitrary token positions, achieving controllable
+                and
+                human-like synthesis beyond traditional TTS capabilities.
+            </li>
+            </ol>
+            <p>
+            By unifying recognition and generation of para-linguistic cues, <strong>NVSpeech</strong> provides the
+            first
+            scalable foundation for expressive speech modeling at both lexical and non-verbal levels.<br>
+
+            </p>
+
+            <div style="margin: 2rem 0 4rem 0;">
+            <img src="moti_para.png" alt="Figure 1" style="display:block;max-width:100%;height:auto;">
+            <div class="figure-caption">
+                <strong>Figure 1.</strong> The gap between conventional speech processing systems and NVV-aware modeling. (a)
+                Common speech datasets omit non-verbal vocalizations (NVVs), while NVSpeech provides explicit
+                word-level NVV annotations. (b) Conventional ASR ignores NVVs; our NVV-aware ASR transcribes
+                both lexical and paralinguistic content. (c) Standard TTS generates only text, while our model enables
+                controllable NVV synthesis for more human-like speech.
+            </div>
+            </div>
+            <div style="margin: 2rem 0 0 0;">
+            <img src="asr-plus.png" alt="Figure 2" style="display:block;max-width:100%;height:auto;">
+            <div class="figure-caption">
+                <strong>Figure 2.</strong> Overview of our paralinguistic-aware speech recognition and generation pipeline. (1)
+                A word-level human annotated dataset of verbal and non-verbal vocalizations is first constructed. (2) A
+                paralinguistic-aware ASR model is trained to jointly transcribe verbal and non-verbal content. (3)
+                This model is used to automatically annotate large-scale unlabeled speech. (4) The expanded dataset
+                enables training a controllable and expressive TTS system that explicitly renders paralinguistic cues.
+            </div>
             </div>
         </section>
-        <section>
-            <div class='demo-intro'>
-                <p>下面是演示。</p>
-            </div>
-        </section>
-        <section id='model-demo'>
-            <h2 class='section-title'>风格提示演示</h2>
-            <p class='subtitle'>试听示例。</p>
-            <div class='model-tabs'>
-                <div id='tag1' class='model-tab active' onclick='switchModelTab("tg1")'>示例一</div>
-                <div id='tag2' class='model-tab' onclick='switchModelTab("tg2")'>示例二</div>
-            </div>
-            <div id='12' class='12'>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>文本</th>
-                            <th>风格提示</th>
-                            <th class='md1'>🔊 示例音频1</th>
-                            <th class='md2'>🔊 示例音频2</th>
-                            <th>对比1</th>
-                            <th>对比2</th>
-                            <th>对比3</th>
-                            <th>真实音频</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class='text-cell'>示例文本</td>
-                            <td class='description-cell'>风格描述</td>
-                            <td class='model-ours-cell'><audio controls preload='none' src='#'></audio></td>
-                            <td class='model-ours-cell'><audio controls preload='none' src='#'></audio></td>
-                            <td><audio controls preload='none' src='#'></audio></td>
-                            <td><audio controls preload='none' src='#'></audio></td>
-                            <td><audio controls preload='none' src='#'></audio></td>
-                            <td><audio controls preload='none' src='#'></audio></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div id='random-picked-content' class='model-content'>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>文本</th>
-                            <th>风格提示</th>
-                            <th class='model-ours'>🔊 示例音频1</th>
-                            <th class='model-ours'>🔊 示例音频2</th>
-                            <th>对比1</th>
-                            <th>对比2</th>
-                            <th>对比3</th>
-                            <th>真实音频</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class='text-cell'>示例文本</td>
-                            <td class='description-cell'>风格描述</td>
-                            <td class='model-ours-cell'><audio controls preload='none' src='#'></audio></td>
-                            <td class='model-ours-cell'><audio controls preload='none' src='#'></audio></td>
-                            <td><audio controls preload='none' src='#'></audio></td>
-                            <td><audio controls preload='none' src='#'></audio></td>
-                            <td><audio controls preload='none' src='#'></audio></td>
-                            <td><audio controls preload='none' src='#'></audio></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div id='disclaimer' class='disclaimer'>
-                <p>* 免责声明：此处为模板，无真实数据。</p>
-            </div>
-        </section>
-        <section id='dataset-demo' class='dataset-section'>
-            <h2 class='section-title'>数据集演示</h2>
-            <p class='subtitle'>以下为数据集样例。</p>
-            <div class='dataset-tabs'>
-                <div id='psc-base-tab' class='dataset-tab active' onclick='switchDatasetTab("psc-base")'>数据集A</div>
-                <div id='psc-scaled-tab' class='dataset-tab' onclick='switchDatasetTab("psc-scaled")'>数据集B</div>
-            </div>
-            <div id='psc-base-content' class='dataset-content active'>
-                <table class='dataset-table'>
-                    <thead>
-                        <tr>
-                            <th>音频</th>
-                            <th>文本</th>
-                            <th>丰富标签</th>
-                            <th>基础标签</th>
-                            <th>风格提示</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><audio controls preload='none' src='#'></audio></td>
-                            <td class='text-cell'>示例文本</td>
-                            <td>
-                                <div class='tag-container'><span class='tag'>标签1</span></div>
-                            </td>
-                            <td>
-                                <div class='tag-container'><span class='basic-tag'>标签A</span></div>
-                            </td>
-                            <td class='description-cell'>风格描述</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div id='psc-scaled-content' class='dataset-content'>
-                <table class='dataset-table'>
-                    <thead>
-                        <tr>
-                            <th>音频</th>
-                            <th>文本</th>
-                            <th>丰富标签</th>
-                            <th>基础标签</th>
-                            <th>风格提示</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><audio controls preload='none' src='#'></audio></td>
-                            <td class='text-cell'>示例文本</td>
-                            <td>
-                                <div class='tag-container'><span class='tag'>标签2</span></div>
-                            </td>
-                            <td>
-                                <div class='tag-container'><span class='basic-tag'>标签B</span></div>
-                            </td>
-                            <td class='description-cell'>风格描述</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </div>
+
+    <section id='model-demo'>
+        <h2 class='section-title'>Demos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="font-size:1.3rem;font-weight:bold;">Paralinguistic Tag</th>
+                    <th style="font-size:1.3rem;font-weight:bold;">Audio Demo</th>
+                    <th style="font-size:1.3rem;font-weight:bold;">Chinese</th>
+                    <th style="font-size:1.3rem;font-weight:bold;">English</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Breeze</td>
+                    <td>
+                        <audio controls>
+                            <source src="0.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">还需要&lt;Breeze&gt;…调整。</td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">Still need &lt;Breeze&gt;... adjustment</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Confirmation-en</td>
+                    <td>
+                        <audio controls>
+                            <source src="1.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        &lt;Confirmation-en&gt;，我记得这个——你在露营手册上也是这么写的：露营地必须平整干燥、背风背阴，最好是地势较高的地方……
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">&lt;Confirmation-en&gt;, I remember this—you wrote the same in the camping manual: the campsite must be flat, dry, sheltered from wind and sun, and preferably at a higher place...</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Surprise-oh, Breeze</td>
+                    <td>
+                        <audio controls>
+                            <source src="2.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        &lt;Surprise-oh&gt;我设计了一种解码程序，看——虽然长得像个相机&lt;Breeze&gt;，但这其实是个探测仪&lt;Breeze&gt;。透过它，我们就能看到一些被隐藏起来的痕迹。
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">&lt;Surprise-oh&gt; I designed a decoding program, look—although it looks like a camera &lt;Breeze&gt;, it's actually a detector &lt;Breeze&gt;. Through it, we can see some hidden traces.</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Dissatisfaction-hnn</td>
+                    <td>
+                        <audio controls>
+                            <source src="15.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        &lt;Dissatisfaction-hnn&gt;自己的朋友麻烦你亲自招待。
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">
+                        &lt;Dissatisfaction-hnn&gt; Please entertain your own friends yourself.
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Emm, Breeze, Sigh</td>
+                    <td>
+                        <audio controls>
+                            <source src="20.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        &lt;Emm&gt;你平时只吃这些吗？&lt;Breeze&gt;&lt;Sigh&gt;，我的通心粉分你一些好了。
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">&lt;Emm&gt; Do you usually only eat these? &lt;Breeze&gt;&lt;Sigh&gt;, I'll share some of my macaroni with you.</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Laugh</td>
+                    <td>
+                        <audio controls>
+                            <source src="39.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">既然是你亲手做的，我就尝尝看吧，呵呵…&lt;Laugh&gt;</td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">Since you made it yourself, I'll give it a try, hehe... &lt;Laugh&gt;</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Surprise-ah</td>
+                    <td>
+                        <audio controls>
+                            <source src="52.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        &lt;Surprise-ah&gt;…这次不是。正好是休息时间，想跟大家聊聊天。
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">&lt;Surprise-ah&gt; ...Not this time. It's just break time, I wanted to chat with everyone.</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Question-oh, Question-ah</td>
+                    <td>
+                        <audio controls>
+                            <source src="58.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">这要是看不着云堇，那些老主顾，可不得拆了我们的戏台 &lt;Question-oh&gt;&lt;Question-ah&gt;?</td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">If Yun Jin can't be seen, those old customers will tear down our stage &lt;Question-oh&gt;&lt;Question-ah&gt;?</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Question-oh</td>
+                    <td>
+                        <audio controls>
+                            <source src="60.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        &lt;Question-oh&gt; 如此说来，你们安排了不止一队人在外盗取烟花，是吗？
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">So, you arranged more than one team to steal fireworks outside, right?</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Sigh</td>
+                    <td>
+                        <audio controls>
+                            <source src="123.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">&lt;Sigh&gt;…咱就不该相信业余摄影师……</td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">&lt;Sigh&gt; ...We really shouldn't have trusted the amateur photographer...</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Surprise-yo</td>
+                    <td>
+                        <audio controls>
+                            <source src="147.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">浇花时…&lt;Surprise-yo&gt;…喷壶喷出彩虹色水雾</td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">When watering flowers... &lt;Surprise-yo&gt;... the watering can sprays rainbow-colored mist</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Question-ei</td>
+                    <td>
+                        <audio controls>
+                            <source src="156.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        教育援助&lt;Question-ei&gt;那你一定很熟悉这附近的情况？
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">Education aid &lt;Question-ei&gt; Then you must be familiar with the situation around here?</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Breeze, Shh</td>
+                    <td>
+                        <audio controls>
+                            <source src="165.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        空气流速异常降低&lt;Breeze&gt;…&lt;Shh&gt;…可能触发微粒分析
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">Abnormal decrease in air flow &lt;Breeze&gt;...&lt;Shh&gt;... may trigger particle analysis</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Emm, Breeze</td>
+                    <td>
+                        <audio controls>
+                            <source src="168.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        &lt;Emm&gt;…比如，&lt;Breeze&gt;临近保质期的食材，只要采用合适的烹饪方式加工熟透，就能吃到性价比很高的一餐。
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">&lt;Emm&gt;...For example, &lt;Breeze&gt; ingredients near their expiration date, as long as they are cooked properly, can make a cost-effective meal.</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Question-en</td>
+                    <td>
+                        <audio controls>
+                            <source src="173.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        你是否已经和供应商确认了交货时间，&lt;Question-en&gt;?
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">Have you confirmed the delivery time with the supplier, &lt;Question-en&gt;?</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Breeze, Cry</td>
+                    <td>
+                        <audio controls>
+                            <source src="276.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        怎么&lt;Breeze&gt;…怎么会&lt;Breeze&gt;…&lt;Cry&gt;…
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">How &lt;Breeze&gt;... how could it be &lt;Breeze&gt;... &lt;Cry&gt;...</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Shh</td>
+                    <td>
+                        <audio controls>
+                            <source src="284.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">天花板夹层检测到振动频率异常&lt;Shh&gt;……</td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">Abnormal vibration frequency detected in the ceiling interlayer &lt;Shh&gt;...</td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Dissatisfaction-hnn, Breeze</td>
+                    <td>
+                        <audio controls>
+                            <source src="340.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        &lt;Dissatisfaction-hnn&gt;看上去很强的样子啊，&lt;Breeze&gt;等我伤好了，我们可以切磋切磋。
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">
+                        &lt;Dissatisfaction-hnn&gt; Looks strong, &lt;Breeze&gt; when I'm healed, we can spar.
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Question-yi, Breeze</td>
+                    <td>
+                        <audio controls>
+                            <source src="366.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        &lt;Question-yi&gt;&lt;Breeze&gt;，优菈？你不是在带新人吗？
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">
+                        &lt;Question-yi&gt;&lt;Breeze&gt;, Eula? Aren't you guiding the newcomers?
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Surprise-wa, Breeze</td>
+                    <td>
+                        <audio controls>
+                            <source src="494.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        &lt;Surprise-wa&gt;&lt;Breeze&gt;，厨具这么齐全的话，就能做很多好吃的呢！
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">
+                        &lt;Surprise-wa&gt;&lt;Breeze&gt;, with such complete kitchenware, you can make a lot of delicious food!
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:1.4rem; font-weight:bold; color:#5b20b4;">Cough, Breeze</td>
+                    <td>
+                        <audio controls>
+                            <source src="350.wav" type="audio/wav">
+                        </audio>
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'SimSun', '宋体', serif;">
+                        &lt;Cough&gt;，&lt;Breeze&gt;不必这么丧气，乐平波琳小姐，我有一个提议。
+                    </td>
+                    <td style="font-size:1.25rem; font-family:'Times New Roman', Times, serif;">&lt;Cough&gt;, &lt;Breeze&gt; Don't be so discouraged, Miss Clementine, I have a proposal.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
     <script>
         function switchDatasetTab(tabName) {
             // Hide all content
@@ -543,6 +782,18 @@
             document.getElementById(tabName + '-content').classList.add('active');
             document.getElementById(tabName + '-tab').classList.add('active');
         }
+
+        // Ensure only one audio plays at a time
+        document.addEventListener('DOMContentLoaded', function () {
+            const audios = document.querySelectorAll('audio');
+            audios.forEach(audio => {
+                audio.addEventListener('play', function () {
+                    audios.forEach(a => {
+                        if (a !== audio) a.pause();
+                    });
+                });
+            });
+        });
     </script>
 </body>
 
